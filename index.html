@@ -45,12 +45,8 @@ video{
 <script>
 const video = document.getElementById("intro");
 
-video.onplay = () => {
-    document.getElementById("loading").style.display="none";
-}
-
+// Video ends → fade → redirect
 video.onended = () => {
-    // Create fade overlay
     const fade = document.createElement("div");
     fade.style.position = "fixed";
     fade.style.top = "0";
@@ -63,18 +59,16 @@ video.onended = () => {
     fade.style.zIndex = "9999";
     document.body.appendChild(fade);
 
- // Start fade
-setTimeout(() => {
-    fade.style.opacity = "1";
-}, 50);
+    setTimeout(() => {
+        fade.style.opacity = "1";
+    }, 50);
 
-// Redirect after fade
-setTimeout(() => {
-    window.location.href = "language.html";
-}, 1800);
+    setTimeout(() => {
+        window.location.href = "language.html";
+    }, 1800);
+};
 
-
-// If the video can't play, redirect after 3 seconds
+// If video fails → redirect
 video.onerror = () => {
     setTimeout(() => {
         window.location.href = "language.html";
