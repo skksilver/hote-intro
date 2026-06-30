@@ -71,13 +71,13 @@ video.onended = () => {
     // Redirect after fade
     setTimeout(() => {
        window.location.href = "language.html";
-};
+},1800);
 
 // If the video can't play, redirect after 3 seconds.
 video.onerror = () => {
     setTimeout(()=>{
        window.location.href = "language.html";
-};
+}, 3000);
 </script>
 
 </body>
