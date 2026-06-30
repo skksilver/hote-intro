@@ -1,2 +1,2 @@
-# hote-intro
+# Shinjukucapsule
 intro for hotel shinjuku
