@@ -63,21 +63,23 @@ video.onended = () => {
     fade.style.zIndex = "9999";
     document.body.appendChild(fade);
 
-    // Start fade
-    setTimeout(() => {
-        fade.style.opacity = "1";
-    }, 50);
+ // Start fade
+setTimeout(() => {
+    fade.style.opacity = "1";
+}, 50);
 
-    // Redirect after fade
-    setTimeout(() => {
-       window.location.href = "language.html";
-},1800);
+// Redirect after fade
+setTimeout(() => {
+    window.location.href = "language.html";
+}, 1800);
 
-// If the video can't play, redirect after 3 seconds.
+
+// If the video can't play, redirect after 3 seconds
 video.onerror = () => {
-    setTimeout(()=>{
-       window.location.href = "language.html";
-}, 3000);
+    setTimeout(() => {
+        window.location.href = "language.html";
+    }, 3000);
+};
 </script>
 
 </body>
