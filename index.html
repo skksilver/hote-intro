@@ -36,7 +36,7 @@ video{
 
 <body>
 
-
+<div id="loading">Welcome to Shinjuku Capsule Hotel</div>
 
 <video id="intro" autoplay muted playsinline>
     <source src="intro.mp4" type="video/mp4">
@@ -45,34 +45,19 @@ video{
 <script>
 const video = document.getElementById("intro");
 
-// Video ends → fade → redirect
+video.onplay = () => {
+    document.getElementById("loading").style.display="none";
+}
+
 video.onended = () => {
-    const fade = document.createElement("div");
-    fade.style.position = "fixed";
-    fade.style.top = "0";
-    fade.style.left = "0";
-    fade.style.width = "100%";
-    fade.style.height = "100%";
-    fade.style.background = "white";
-    fade.style.opacity = "0";
-    fade.style.transition = "opacity 1.5s ease";
-    fade.style.zIndex = "9999";
-    document.body.appendChild(fade);
-
-    setTimeout(() => {
-        fade.style.opacity = "1";
-    }, 50);
-
-    setTimeout(() => {
-        window.location.href = "language.html";
-    }, 1800);
+    window.location.href="https://sites.google.com/view/guideinhotel/%E3%83%9B%E3%83%BC%E3%83%A0";
 };
 
-// If video fails → redirect
+// If the video can't play, redirect after 3 seconds.
 video.onerror = () => {
-    setTimeout(() => {
-        window.location.href = "language.html";
-    }, 3000);
+    setTimeout(()=>{
+        window.location.href="https://sites.google.com/view/guideinhotel/%E3%83%9B%E3%83%BC%E3%83%A0";
+    },3000);
 };
 </script>
 
