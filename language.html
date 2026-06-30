@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Select Language</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 40px;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+button {
+    display: block;
+    width: 220px;
+    margin: 15px auto;
+    padding: 15px;
+    font-size: 18px;
+    border: 1px solid #000;
+    background: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: black;
+    color: white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Select Your Language</h1>
+
+    <button onclick="go('en')">🇬🇧 English</button>
+    <button onclick="go('ja')">🇯🇵 日本語</button>
+    <button onclick="go('zh')">🇨🇳 中文</button>
+</div>
+
+<script>
+function go(lang){
+    let base = "https://sites.google.com/view/guideinhotel/%E3%83%9B%E3%83%BC%E3%83%A0";
+
+    if(lang === "en"){
+        window.location.href = base;
+    }
+
+    if(lang === "ja"){
+        window.location.href =
+        "https://translate.google.com/translate?sl=en&tl=ja&u=" + base;
+    }
+
+    if(lang === "zh"){
+        window.location.href =
+        "https://translate.google.com/translate?sl=en&tl=zh-CN&u=" + base;
+    }
+}
+</script>
+
+</body>
+</html>
