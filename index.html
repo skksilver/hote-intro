@@ -50,7 +50,28 @@ video.onplay = () => {
 }
 
 video.onended = () => {
-    window.location.href="https://sites.google.com/view/guideinhotel/%E3%83%9B%E3%83%BC%E3%83%A0";
+    // Create fade overlay
+    const fade = document.createElement("div");
+    fade.style.position = "fixed";
+    fade.style.top = "0";
+    fade.style.left = "0";
+    fade.style.width = "100%";
+    fade.style.height = "100%";
+    fade.style.background = "white";
+    fade.style.opacity = "0";
+    fade.style.transition = "opacity 1.5s ease";
+    fade.style.zIndex = "9999";
+    document.body.appendChild(fade);
+
+    // Start fade
+    setTimeout(() => {
+        fade.style.opacity = "1";
+    }, 50);
+
+    // Redirect after fade
+    setTimeout(() => {
+        window.location.href = "https://sites.google.com/view/guideinhotel/%E3%83%9B%E3%83%BC%E3%83%A0";
+    }, 1800);
 };
 
 // If the video can't play, redirect after 3 seconds.
