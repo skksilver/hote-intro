@@ -37,30 +37,95 @@ button:hover {
     background: black;
     color: white;
 }
+.hidden {
+    display: none;
+}
+.back {
+    margin-top: 25px;
+    border: none;
+    text-decoration: underline;
+    font-size: 14px;
+    width: auto;
+}
+.back:hover {
+    background: white;
+    color: black;
+}
 </style>
 </head>
 <body>
-<div class="container">
+
+<!-- STEP 1: LANGUAGE -->
+<div class="container" id="step-language">
     <h1>Select Your Language</h1>
-    <button onclick="go('en')"> English</button>
-    <button onclick="go('ja')"> 日本語</button>
-    <button onclick="go('zh')"> 中文</button>
-    <button onclick="go('kr')"> 한국어</button>
+    <button onclick="selectLanguage('en')">English</button>
+    <button onclick="selectLanguage('ja')">日本語</button>
+    <button onclick="selectLanguage('zh')">中文</button>
+    <button onclick="selectLanguage('kr')">한국어</button>
 </div>
+
+<!-- STEP 2: GENDER -->
+<div class="container hidden" id="step-gender">
+    <h1 id="gender-title">Select Your Gender</h1>
+    <button onclick="selectGender('male')" id="btn-male">Male</button>
+    <button onclick="selectGender('female')" id="btn-female">Female</button>
+    <button class="back" onclick="goBack()" id="btn-back">Back</button>
+</div>
+
 <script>
-function go(lang){
-    if(lang === "en"){
-        window.location.href = "https://sites.google.com/view/guideinhotel/english";
+// STEP 1: Fill in your real Google Sites URLs below.
+// Each language has a male and female link.
+const links = {
+    en: {
+        male:   "https://sites.google.com/view/guideinhotel/english",
+        female: "https://sites.google.com/view/femaleinformation/english"
+    },
+    ja: {
+        male:   "https://sites.google.com/view/guideinhotel/%E6%97%A5%E6%9C%AC%E8%AA%9E",
+        female: "https://sites.google.com/view/femaleinformation/japanese"
+    },
+    zh: {
+        male:   "https://sites.google.com/view/guideinhotel/%E8%AF%AD%E8%A8%80",
+        female: "https://sites.google.com/view/femaleinformation/chinese"
+    },
+    kr: {
+        male:   "https://sites.google.com/view/guideinhotel/%EC%96%B8%EC%96%B4",
+        female: "https://sites.google.com/view/femaleinformation/korean"
     }
-    if(lang === "ja"){
-        window.location.href = "https://sites.google.com/view/guideinhotel/english";
-    }
-    if(lang === "zh"){
-        window.location.href = "https://sites.google.com/view/guideinhotel/%E8%AF%AD%E8%A8%80";
-    }
-    if(lang === "kr"){
-        window.location.href = "https://sites.google.com/view/guideinhotel/%E8%AF%AD%E8%A8%80";
-    }
+};
+
+// Text for the gender screen in each language (so guests understand it)
+const genderText = {
+    en: { title: "Select Your Gender", male: "Male", female: "Female", back: "Back" },
+    ja: { title: "性別を選択してください", male: "男性", female: "女性", back: "戻る" },
+    zh: { title: "请选择性别", male: "男", female: "女", back: "返回" },
+    kr: { title: "성별을 선택하세요", male: "남성", female: "여성", back: "뒤로" }
+};
+
+let selectedLang = null;
+
+function selectLanguage(lang) {
+    selectedLang = lang;
+
+    // Update gender screen text to match chosen language
+    document.getElementById("gender-title").innerText = genderText[lang].title;
+    document.getElementById("btn-male").innerText = genderText[lang].male;
+    document.getElementById("btn-female").innerText = genderText[lang].female;
+    document.getElementById("btn-back").innerText = genderText[lang].back;
+
+    // Switch screens
+    document.getElementById("step-language").classList.add("hidden");
+    document.getElementById("step-gender").classList.remove("hidden");
+}
+
+function selectGender(gender) {
+    if (!selectedLang) return;
+    window.location.href = links[selectedLang][gender];
+}
+
+function goBack() {
+    document.getElementById("step-gender").classList.add("hidden");
+    document.getElementById("step-language").classList.remove("hidden");
 }
 </script>
 </body>
