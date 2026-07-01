@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Select Language</title>
-
 <style>
 body {
     margin: 0;
@@ -15,17 +14,14 @@ body {
     background: white;
     font-family: Arial, sans-serif;
 }
-
 .container {
     text-align: center;
 }
-
 h1 {
     margin-bottom: 40px;
     font-weight: 300;
     letter-spacing: 2px;
 }
-
 button {
     display: block;
     width: 220px;
@@ -37,44 +33,35 @@ button {
     cursor: pointer;
     transition: 0.3s;
 }
-
 button:hover {
     background: black;
     color: white;
 }
 </style>
 </head>
-
 <body>
-
 <div class="container">
     <h1>Select Your Language</h1>
-
     <button onclick="go('en')"> English</button>
     <button onclick="go('ja')"> 日本語</button>
     <button onclick="go('zh')"> 中文</button>
     <button onclick="go('kr')"> 한국어</button>
 </div>
-
 <script>
 function go(lang){
-
     if(lang === "en"){
         window.location.href = "https://sites.google.com/view/guideinhotel/english";
     }
-
     if(lang === "ja"){
         window.location.href = "https://sites.google.com/view/guideinhotel/english";
     }
-
     if(lang === "zh"){
         window.location.href = "https://sites.google.com/view/guideinhotel/%E8%AF%AD%E8%A8%80";
     }
-     if(lang === "kr"){
+    if(lang === "kr"){
         window.location.href = "https://sites.google.com/view/guideinhotel/%E8%AF%AD%E8%A8%80";
-
+    }
 }
 </script>
-
 </body>
 </html>
